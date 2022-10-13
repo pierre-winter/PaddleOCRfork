@@ -189,14 +189,11 @@ def save_structure_res(res, save_folder, img_name, img_idx=0):
             'w',
             encoding='utf8') as f:
         for region in res_cp:
-            print('11111111111')
-            print(region)
             roi_img = region.pop('img')
             f.write('{}\n'.format(json.dumps(region)))
 
             if region['type'].lower() == 'table' and len(region[
                     'res']) > 0 and 'html' in region['res']:
-                print('insideeeeeeeeee')
                 excel_path = os.path.join(
                     excel_save_folder,
                     '{}_{}.xls'.format(region['bbox'], img_idx))
